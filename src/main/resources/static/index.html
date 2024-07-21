@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+    <script>
+        async function getUsers() {
+            const response = await fetch('/api/users');
+            const users = await response.json();
+            document.getElementById('users').innerHTML = JSON.stringify(users, null, 2);
+        }
+
+        async function createUser() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            await fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email }),
+            });
+
+            getUsers();
+        }
+    </script>
+</head>
+<body>
+    <h1>User Management</h1>
+    <h2>Users:</h2>
+    <pre id="users"></pre>
+    <button onclick="getUsers()">Refresh Users</button>
+
+    <h2>Create User:</h2>
+    <form onsubmit="createUser(); return false;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
