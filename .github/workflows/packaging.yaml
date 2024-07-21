@@ -27,8 +27,20 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    - name: Test
+      run: mvn clean compile test
+    - name: Package
       run: mvn clean package --file pom.xml
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Upload proejct artifact
+        path: target/springboot-crud-app-beta-1.jar
+    - name: Download dmp.jar
+      uses: actions/download-artifact@v3
+      with:
+        name: Download proejct artifact
+        path: target/springboot-crud-app-beta-1.jar
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     # - name: Update dependency graph
