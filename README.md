@@ -10,3 +10,9 @@
 - pushing docker images to Container registries.
 - deploying this app in the k8s environment.
 - ... so on
+
+
+### Run the app
+```
+docker run -p 9191:9191 ghcr.io/geekychetan/springboot-crud-app
+```
