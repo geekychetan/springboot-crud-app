@@ -1,6 +1,6 @@
 # Spring Boot Basic Application (REST API)
 
-## Authors
+## Author
 - [GeekyChetan](https://github.com/geekychetan)
 
 ### This project is created for the learning purpose: Some of the use cases are:
